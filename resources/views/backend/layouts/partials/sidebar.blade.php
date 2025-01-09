@@ -394,18 +394,19 @@
                         <li><a href="{{route('dashboard')}}">Admin Dashboard</a></li>
                     </ul>
                 </li>
+               
+                <li class="menu-title"><span>App & Settings</span></li>
                 <li>
                     <a href="{{route('notifications.index')}}"><i class="fe fe-bell"></i> <span>Notifications</span></a>
                 </li>
-                <li class="menu-title"><span>App & Settings</span></li>
                 <li>
-                    <a href="#"><i class="fe fe-users"></i> <span>Users</span></a>
+                    <a href="{{route('users.index')}}"><i class="fe fe-users"></i> <span>Users</span></a>
                 </li>
                 <li>
                     <a href="{{route('roles.index')}}"><i class="fe fe-clipboard"></i> <span>User Roles</span></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fe fe-settings"></i> <span>Profile & Settings</span></a>
+                    <a href="{{route('users.show')}}"><i class="fe fe-settings"></i> <span>Profile & Settings</span></a>
                 </li>
 
             </ul>

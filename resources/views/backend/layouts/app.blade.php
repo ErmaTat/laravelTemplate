@@ -9,12 +9,12 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
 
-    <meta name="twitter:card" content="">
+    {{-- <meta name="twitter:card" content="">
     <meta name="twitter:site" content="">
     <meta name="twitter:title" content="">
     <meta name="twitter:description" content="">
     <meta name="twitter:image" content="">
-    <meta name="twitter:image:alt" content="">
+    <meta name="twitter:image:alt" content=""> --}}
     <title>App-@yield('title', '')</title>
 
     {{-- <link rel="shortcut icon" href="assets/img/favicon.png"> --}}
@@ -32,10 +32,15 @@
 
     <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
   
-
-
     <script src="{{ asset('backend/assets/js/layout.js')}}" ></script>
-   
+   <style>
+    .border-input {
+        border: solid 1px;
+        border-radius:10px; 
+        border-color: rgb(165, 165, 165);
+        padding: 8px 15px;
+    }
+   </style>
     @yield('css')
 </head>
 
@@ -48,7 +53,7 @@
         <div class="page-wrapper">
             <div class="content container-fluid pb-0">
                 <div class="page-header">
-                    @if (session()->has('success'))
+                @if (session()->has('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                        <strong>{{ session('success') }}</strong> 
                         <button type="button" class="btn-close" data-bs-dismiss="alert"

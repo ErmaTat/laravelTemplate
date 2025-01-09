@@ -1,0 +1,64 @@
+@extends('backend.pages.users.layout')
+@section('menu-title', 'Update Password')
+@section('page-content')
+    {{-- <div class="row">
+        <div class="col-lg-6 col-12">
+            <div class="input-block mb-3">
+                <label>Display Name</label>
+                <input type="text" class="form-control" placeholder="Display Name" name="name"
+                    value="{{ $user->name }}" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="input-block mb-3">
+                <label>Email</label>
+                <input type="text" class="form-control" placeholder="Enter Email Address" name="email"
+                    value="{{ $user->email }}" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="input-block mb-3">
+                <label>Mobile Number</label>
+                <input type="text" class="form-control" placeholder="Enter Mobile Number" />
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="btn-path text-end">
+                <a href="javascript:void(0);" class="btn btn-primary">Update</a>
+            </div>
+        </div>
+    </div> --}}
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="input-block mb-3">
+                <label>Old Password: <span class="text-danger">*</span></label>
+                <input type="password" class="form-control" required name="current_password"
+                    placeholder="********" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="input-block mb-3">
+                <label>New Password: <span class="text-danger">*</span></label>
+                <input type="password" class="form-control" required name="password"
+                    placeholder="********" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="input-block mb-3">
+                <label>Confirm New Password: <span class="text-danger">*</span></label>
+                <input type="password" class="form-control" required
+                    name="password_confirmation" placeholder="********" />
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <button type="submit"
+                    class="float-end btn img-btn btn-primary paid-continue-btn">
+                    Update Password
+                </button>
+            </div>
+        </div>
+
+    </div>
+@endsection

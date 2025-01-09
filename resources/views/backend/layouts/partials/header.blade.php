@@ -35,7 +35,7 @@
     <div class="top-nav-search">
         <form>
             <input type="text" class="form-control" placeholder="Search here">
-            <button class="btn" type="submit"><img src="{{ asset('backend/assets/img/icons/search.svg')}}"
+            <button class="btn" type="submit"><img src="{{ asset('backend/assets/img/icons/search.svg') }}"
                     alt="img"></button>
         </form>
     </div>
@@ -45,16 +45,32 @@
         <i class="fas fa-bars"></i>
     </a>
 
-
+   
     <ul class="nav nav-tabs user-menu">
-
+       
+        <li class="nav-item  has-arrow dropdown-heads ">
+            <div class="position-relative d-flex h-10 rounded-xl w-52 border-2 p-0.5 sm:w-[16.5rem] border-input bg-layer3">
+                <div class="position-relative mr-1 d-flex  align-items-center ml-1.5 flex-auto">
+                    {{-- <img
+                        class="mr-1.5 flex h-6 w-6 flex-none" src="/coin/NGN.rect.png"> --}}
+                        <i class="fa fa-wallet"></i>
+                    <div class="font-extrabold ellipsis w-0 flex-auto">  NGN&nbsp;0.00</div><svg
+                        class="icon w-4 -rotate-90 text-secondary" viewBox="0 0 32 32">
+                        <path
+                            d="M20.1912 6.1001L9.79119 16.5001L20.1912 26.9001L23.2088 23.8825L15.8264 16.5001L23.2088 9.1177L20.1912 6.1001Z">
+                        </path>
+                    </svg>
+                </div>
+            </div>
+        </li>
+    
         <li class="nav-item dropdown has-arrow flag-nav">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">
-                <img src="{{ asset('backend/assets/img/flags/us1.png')}}" alt="flag"><span>English</span>
+                <img src="{{ asset('backend/assets/img/flags/us1.png') }}" alt="flag"><span>English</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <a href="javascript:void(0);" class="dropdown-item">
-                    <img src="{{ asset('assets/img/flags/us.png')}}" alt="flag"><span>English</span>
+                    <img src="{{ asset('assets/img/flags/us.png') }}" alt="flag"><span>English</span>
                 </a>
             </div>
         </li>
@@ -99,7 +115,7 @@
                                 </div>
                             </a>
                         </li>
-                      
+
                     </ul>
                 </div>
                 <div class="topnav-dropdown-footer">
@@ -116,12 +132,13 @@
         <li class="nav-item dropdown">
             <a href="javascript:void(0)" class="user-link  nav-link" data-bs-toggle="dropdown">
                 <span class="user-img">
-                    <img src="{{ asset('backend/assets/img/profiles/avatar-07.jpg')}}" alt="img" class="profilesidebar">
+                    <img src="{{ asset('backend/assets/img/profiles/avatar-07.jpg') }}" alt="img"
+                        class="profilesidebar">
                     <span class="animate-circle"></span>
                 </span>
                 <span class="user-content">
                     <span class="user-details">Admin</span>
-                    <span class="user-name">{{Auth::user()->name}}</span>
+                    <span class="user-name">{{ Auth::user()->name }}</span>
                 </span>
             </a>
             <div class="dropdown-menu menu-drop-user">
