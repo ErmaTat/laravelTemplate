@@ -41,8 +41,14 @@
                     <td>{{$index + 1 }}.</td>
                     <td class="role-data">{{$permission->name}}</td>
                     <td>
-                        <a href="#" class="btn btn-greys me-2" data-bs-toggle="modal"
-                        data-bs-target="#edit_role"><i class="fa fa-trash me-1"></i> Remove</a>
+                      <form method="POST" id="form-{{ $permission->id }}"
+                        action="{{ route('permissions.remove', $role->name) }}">
+                        @csrf
+                        @method('DELETE')
+                        <input type="hidden" name="permission" value="{{$permission->name}}">
+                        <a href="javascript:void(0)" onclick="remove_permission({{ $permission->id }})" class="btn btn-greys me-2"><i class="fa fa-trash me-1"></i> Remove</a>
+                    </form>
+                       
                     </td>
                   </tr>
                 @endforeach
@@ -66,5 +72,23 @@
         });
     });
 
+    function remove_permission(id) {
+          Swal.fire({
+              title: "Unassign Permission?",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              confirmButtonText: "Confirm",
+              confirmButtonClass: "btn btn-primary",
+              cancelButtonClass: "btn btn-danger ml-1",
+              buttonsStyling: false
+          }).then(function(t) {
+              if (t.value) {
+                  $(`#form-${id}`).submit();
+              }
+
+          })
+      }
   </script>
 @endsection

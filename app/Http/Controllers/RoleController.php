@@ -87,14 +87,57 @@ class RoleController extends Controller
     public function destroy(string $id)
     {
         //
+        $role = Role::find($id);
+        if ($role) {
+            if ($role->users()->count() > 0) {
+                return back()->with('error', 'Cannot delete role because it is assigned to one or more users.');
+            }
+            $role->delete();
+            return back()->with('success','Role deleted successfully');
+        }else{
+            return back()->with('error','Role not found');
+        }
+        
     }
 
-    public function permission(Request $request, string $name){
-        $role = Role::where('name',$name)->first();
-        $rolePermissions = Permission::join("role_has_permissions","role_has_permissions.permission_id","=","permissions.id")
-            ->where("role_has_permissions.role_id",$role->id)
+    public function permission(Request $request, string $name)
+    {
+        $role = Role::where('name', $name)->first();
+        $rolePermissions = Permission::join("role_has_permissions", "role_has_permissions.permission_id", "=", "permissions.id")
+            ->where("role_has_permissions.role_id", $role->id)
             ->get();
-        $allpermissions=Permission::all();
-        return view('backend.pages.roles.permissions',compact('role','rolePermissions','allpermissions'));
+
+        $freePermissions = Permission::whereNotIn('id', function ($query) use ($role) {
+            $query->select('permission_id')
+                ->from('role_has_permissions')
+                ->where('role_id', $role->id);
+        })->get();
+
+        return view('backend.pages.roles.permissions', compact('role', 'freePermissions', 'rolePermissions'));
+    }
+
+
+    public function updpermission(Request $request, string $name)
+    {
+        $role = Role::where('name', $name)->first();
+
+        if ($role) {
+            foreach ($request->permissions as $permissionName) {
+                $permission = Permission::where('name', $permissionName)->first();
+                if ($permission && !$role->hasPermissionTo($permission)) {
+                    $role->givePermissionTo($permission);
+                }
+            }
+            return back()->with('success', 'Permissions added successfully.');
+        }
+
+        return back()->with('error', 'Role not found.');
+    }
+
+
+    public function rempermission(Request $request, string $name){
+        $role = Role::where('name',$name)->first();
+        $role->revokePermissionTo($request->permission);
+        return back()->with('success','Permissions has been revoked');
     }
 }

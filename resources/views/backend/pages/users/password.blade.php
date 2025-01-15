@@ -1,34 +1,9 @@
 @extends('backend.pages.users.layout')
 @section('menu-title', 'Update Password')
 @section('page-content')
-    {{-- <div class="row">
-        <div class="col-lg-6 col-12">
-            <div class="input-block mb-3">
-                <label>Display Name</label>
-                <input type="text" class="form-control" placeholder="Display Name" name="name"
-                    value="{{ $user->name }}" />
-            </div>
-        </div>
-        <div class="col-lg-6 col-12">
-            <div class="input-block mb-3">
-                <label>Email</label>
-                <input type="text" class="form-control" placeholder="Enter Email Address" name="email"
-                    value="{{ $user->email }}" />
-            </div>
-        </div>
-        <div class="col-lg-6 col-12">
-            <div class="input-block mb-3">
-                <label>Mobile Number</label>
-                <input type="text" class="form-control" placeholder="Enter Mobile Number" />
-            </div>
-        </div>
-
-        <div class="col-lg-12">
-            <div class="btn-path text-end">
-                <a href="javascript:void(0);" class="btn btn-primary">Update</a>
-            </div>
-        </div>
-    </div> --}}
+<form action="{{route('password.update')}}" method="post">
+    @csrf
+    @method('PUT')
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="input-block mb-3">
@@ -61,4 +36,6 @@
         </div>
 
     </div>
+</form>
+   
 @endsection

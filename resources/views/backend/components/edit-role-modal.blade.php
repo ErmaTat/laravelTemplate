@@ -47,7 +47,7 @@
               data-bs-dismiss="modal"
               class="btn btn-primary paid-continue-btn"
             >
-              Submit
+              Update
             </button>
           </div>
         </form>

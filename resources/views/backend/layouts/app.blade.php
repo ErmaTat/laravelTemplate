@@ -41,16 +41,36 @@
         padding: 8px 15px;
     }
    </style>
+   <style>
+    @font-face {
+        font-family: poppins;
+        src: url('/backend/assets/fonts/Poppins/Poppins-Regular.ttf');
+    }
+
+    @font-face {
+        font-family: sour_gummy;
+        src: url('/backend/assets/fonts/Sour_Gummy/static/SourGummy_Expanded-Regular.ttf');
+    }
+
+    @font-face {
+        font-family: fredoka;
+        src: url('/backend/assets/fonts/fredoka/static/Fredoka-Regular.ttf');
+    }
+
+    body {
+        font-family: "fredoka", sans-serif;
+    }
+</style>
     @yield('css')
 </head>
-
+@vite('resources/js/app.js') 
 <body>
     <div class="main-wrapper">
         @include('backend.layouts.partials.header')
 
         @include('backend.layouts.partials.sidebar')
 
-        <div class="page-wrapper">
+        <div class="page-wrapper {{ Route::currentRouteName() === 'notifications.index' ? 'notifications' : '' }}">
             <div class="content container-fluid pb-0">
                 <div class="page-header">
                 @if (session()->has('success'))
@@ -88,12 +108,13 @@
                 @endif
                     <div class="content-page-header">
                         <h5>@yield('page-title')</h5>
-                        
+                       
                         <div class="list-btn">
                             @yield('list-btn')
                         </div>
-
+                        @yield('not-btns')
                     </div>
+
                     @yield('other')
                 </div>
 

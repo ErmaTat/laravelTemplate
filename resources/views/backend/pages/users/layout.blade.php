@@ -4,7 +4,6 @@
 @section('list-btn')
 
 @endsection
-
 @section('content')
 <div class="row">
     <div class="col-xl-3 col-md-4">
@@ -45,7 +44,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="two-factor.html" class="nav-link">
+                <a href="{{route('users.twofactor')}}" class="nav-link">
                 <i class="fa fa-certificate"></i> <span>Two Factor</span>
                 </a>
                 </li>
